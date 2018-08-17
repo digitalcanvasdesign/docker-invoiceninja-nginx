@@ -6,6 +6,10 @@ It extends this base image:
 
 https://hub.docker.com/r/invoiceninja/invoiceninja/
 
+https://hub.docker.com/r/digitalcanvasdesign/invoiceninja-nginx/
+
 https://github.com/invoiceninja/dockerfiles
 
 https://github.com/invoiceninja/dockerfiles/tree/master/docker-compose
+
+Mount volume `/var/log/ninja_cron` for cron logs

@@ -9,8 +9,12 @@ ENV BUILD_DEPENDENCIES="\
     RUN_DEPENDENCIES="\
 		openssl \
 		supervisor \
-		wget \
+		cron \
 		gnupg"
+
+COPY ./crontab.txt /var/crontab.txt
+COPY ./supervisord.conf /etc/supervisord.conf
+COPY ./nginx/conf.d/ /etc/nginx/conf.d
 
 RUN apt-get update && apt-get install -y $BUILD_DEPENDENCIES $RUN_DEPENDENCIES \
 	\
@@ -20,11 +24,13 @@ RUN apt-get update && apt-get install -y $BUILD_DEPENDENCIES $RUN_DEPENDENCIES \
 	    && apt-get update && apt-get install --no-install-recommends --no-install-suggests -y nginx=${NGINX_VERSION} \
 	    && rm -f /etc/nginx/conf.d/* \
     ) \
+    && ( \
+        crontab /var/crontab.txt \
+        && chmod 600 /etc/crontab \
+    ) \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $BUILD_DEPENDENCIES \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-COPY ./supervisord.conf /etc/supervisord.conf
-COPY ./nginx/conf.d/ /etc/nginx/conf.d
 
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
