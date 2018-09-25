@@ -27,13 +27,13 @@ RUN apt-get update && apt-get install -y $BUILD_DEPENDENCIES $RUN_DEPENDENCIES \
     && ( \
         crontab /var/crontab.txt \
         && chmod 600 /etc/crontab \
-	&& mkdir -p /var/log/ninja_cron \
-	&& touch /var/log/ninja_cron/reminders.log \
-	&& touch /var/log/ninja_cron/invoices.log \
+        && mkdir -p /var/log/ninja_cron \
+        && mkdir -p /var/log/supervisor \
+        && touch /var/log/ninja_cron/reminders.log \
+        && touch /var/log/ninja_cron/invoices.log \
     ) \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $BUILD_DEPENDENCIES \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
 
 CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
