@@ -36,10 +36,11 @@ services:
     environment:
       TRUSTED_PROXIES: '10.0.0.0/8,172.16.0.0/12,192.168.0.0/16'
       PHANTOMJS_BIN_PATH: /usr/local/bin/phantomjs
-#      APP_ENV: development
-#      APP_DEBUG: 1
-      APP_URL: http://localhost/invoices
-      APP_KEY: my-random-key
+      APP_ENV: development
+      APP_DEBUG: 1
+      APP_URL: http://localhost
+      APP_KEY: base64:WYbh/mOj2odAYpm6Hcuv1p0x+td8VYJyUqILncHo+pw=
+      APP_CIPHER: AES-256-CBC
       DB_TYPE: mysql
       DB_HOST: mysql
       DB_DATABASE: invoice_ninja
@@ -48,4 +49,4 @@ services:
     labels:
     - "traefik.enable=true"
     - "traefik.port=80"
-    - "traefik.frontend.rule=Host: localhost; PathPrefixStrip: /invoices, /invoices/"
+    - "traefik.frontend.rule=Host: localhost"
