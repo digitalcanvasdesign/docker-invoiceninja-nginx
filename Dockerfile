@@ -27,6 +27,9 @@ RUN apt-get update && apt-get install -y $BUILD_DEPENDENCIES $RUN_DEPENDENCIES \
     && ( \
         crontab /var/crontab.txt \
         && chmod 600 /etc/crontab \
+	&& mkdir -p /var/log/ninja_cron \
+	&& touch /var/log/ninja_cron/reminders.log \
+	&& touch /var/log/ninja_cron/invoices.log \
     ) \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $BUILD_DEPENDENCIES \
     && apt-get clean \
