@@ -1,15 +1,21 @@
-# InvoiceNinja + Nginx
+# InvoiceNinja + Nginx + Cron Docker Bundle
 
-The base container does not include a bundled in webserver, and I prefer to deploy this self hosted project bundled with nginx.
+[![Automated](https://img.shields.io/docker/automated/digitalcanvasdesign/invoiceninja-nginx.svg)](https://img.shields.io/microbadger/automated/digitalcanvasdesign/invoiceninja-nginx)
+[![Build](https://img.shields.io/docker/build/digitalcanvasdesign/invoiceninja-nginx.svg)](https://img.shields.io/microbadger/automated/digitalcanvasdesign/invoiceninja-nginx)
+[![Image Size](https://img.shields.io/microbadger/image-size/digitalcanvasdesign/invoiceninja-nginx.svg)](https://img.shields.io/microbadger/automated/digitalcanvasdesign/invoiceninja-nginx)
 
-It extends this base image:
+The main container provided by [Invoice Ninja](https://github.com/invoiceninja/dockerfiles/blob/master/Dockerfile) only includes the base project. It does not provide a running cron job or web server. I prefer to run this project with all the necessary parts bundled in a single container. 
 
-https://hub.docker.com/r/invoiceninja/invoiceninja/
+### Log mount points
 
-https://hub.docker.com/r/digitalcanvasdesign/invoiceninja-nginx/
+Mount volume for cron and webserver logs.
 
-https://github.com/invoiceninja/dockerfiles
+- /var/log/ninja_cron
+- /var/log/nginx
 
-https://github.com/invoiceninja/dockerfiles/tree/master/docker-compose
+### References
 
-Mount volume `/var/log/ninja_cron` for cron logs
+- We extends this base image: [https://hub.docker.com/r/invoiceninja/invoiceninja/](https://hub.docker.com/r/invoiceninja/invoiceninja/)
+- [https://hub.docker.com/r/digitalcanvasdesign/invoiceninja-nginx/](https://hub.docker.com/r/digitalcanvasdesign/invoiceninja-nginx/)
+- [https://github.com/invoiceninja/dockerfiles/tree/master/docker-compose](https://github.com/invoiceninja/dockerfiles/tree/master/docker-compose)
+
