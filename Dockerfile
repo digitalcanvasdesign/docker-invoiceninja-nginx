@@ -1,8 +1,8 @@
-FROM invoiceninja/invoiceninja
+FROM invoiceninja/invoiceninja:4.5.9
 
 LABEL maintainer="Jason Raimondi <jason@raimondi.us>"
 
-ENV NGINX_VERSION 1.13.12-1~stretch
+ENV NGINX_VERSION 1.15.8-1~stretch
 ENV BUILD_DEPENDENCIES="\
         \
         wget" \
