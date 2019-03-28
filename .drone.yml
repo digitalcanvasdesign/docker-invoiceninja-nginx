@@ -23,6 +23,7 @@ steps:
       - tag
   settings:
     repo: digitalcanvasdesign/invoiceninja-nginx
+    dockerfile: Dockerfile.tag
     username:
       from_secret: docker_username
     password:
