@@ -1,4 +1,4 @@
-FROM invoiceninja/invoiceninja:4.5.12
+FROM invoiceninja/invoiceninja:4.5.13
 
 LABEL maintainer="Jason Raimondi <jason@raimondi.us>"
 
@@ -37,4 +37,8 @@ RUN crontab /var/crontab.txt \
 COPY ./supervisord.conf /etc/supervisord.conf
 COPY ./nginx/conf.d/ /etc/nginx/conf.d
 
-CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
+COPY ./bin/ /ninja/bin/
+
+RUN chmod +x /ninja/bin/*
+
+CMD ["/ninja/bin/start"]
