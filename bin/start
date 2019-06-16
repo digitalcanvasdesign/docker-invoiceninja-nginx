@@ -1,0 +1,23 @@
+#!/bin/bash
+
+touch /.env.sh
+echo "export DB_TYPE=$DB_TYPE" >> /.env.sh
+echo "export DB_HOST=$DB_HOST" >> /.env.sh
+echo "export DB_DATABASE=$DB_DATABASE" >> /.env.sh
+echo "export DB_USERNAME=$DB_USERNAME" >> /.env.sh
+echo "export DB_PASSWORD=$DB_PASSWORD" >> /.env.sh
+echo "export DB_TYPE=$DB_TYPE" >> /.env.sh
+echo "export DB_HOST=$DB_HOST" >> /.env.sh
+echo "export DB_DATABASE=$DB_DATABASE" >> /.env.sh
+echo "export DB_USERNAME=$DB_USERNAME" >> /.env.sh
+echo "export DB_PASSWORD=$DB_PASSWORD" >> /.env.sh
+echo "export MAIL_DRIVER=$MAIL_DRIVER" >> /.env.sh
+echo "export MAIL_PORT=$MAIL_PORT" >> /.env.sh
+echo "export MAIL_ENCRYPTION=$MAIL_ENCRYPTION" >> /.env.sh
+echo "export MAIL_HOST=$MAIL_HOST" >> /.env.sh
+echo "export MAIL_USERNAME=$MAIL_USERNAME" >> /.env.sh
+echo "export MAIL_FROM_ADDRESS=$MAIL_FROM_ADDRESS" >> /.env.sh
+echo "export MAIL_FROM_NAME=$MAIL_FROM_NAME" >> /.env.sh
+echo "export MAIL_PASSWORD=$MAIL_PASSWORD" >> /.env.sh
+
+/usr/bin/supervisord -n -c /etc/supervisord.conf

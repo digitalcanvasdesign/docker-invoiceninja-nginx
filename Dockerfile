@@ -37,4 +37,8 @@ RUN crontab /var/crontab.txt \
 COPY ./supervisord.conf /etc/supervisord.conf
 COPY ./nginx/conf.d/ /etc/nginx/conf.d
 
-CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisord.conf"]
+COPY ./bin/ /ninja/bin/
+
+RUN chmod +x /ninja/bin/*
+
+CMD ["/ninja/bin/start"]

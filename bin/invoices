@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+source /.env.sh
+/usr/local/bin/php /var/www/app/artisan ninja:send-invoices
