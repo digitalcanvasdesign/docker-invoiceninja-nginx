@@ -1,2 +1,2 @@
-0 8 * * * /ninja/bin/invoices >> /var/log/ninja_cron/invoices.log 2>&1
-0 8 * * * /ninja/bin/reminders >> /var/log/ninja_cron/reminders.log 2>&1
+15 * * * * /ninja/bin/invoices >> /var/log/ninja_cron/invoices.log 2>&1
+20 * * * * /ninja/bin/reminders >> /var/log/ninja_cron/reminders.log 2>&1
